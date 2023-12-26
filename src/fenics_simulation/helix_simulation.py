@@ -6,14 +6,14 @@ k = 300
 u_in = 20
 u_out = -20
 
-xml_file = "../helix.xml"
+xml_file = "helix_mesh.xml"
 mesh = Mesh(xml_file)
-fd = MeshFunction('size_t', mesh, "../helix_facet_region.xml")
+fd = MeshFunction('size_t', mesh, "helix_mesh_facet_region.xml")
 
 V = FunctionSpace(mesh, 'P', 1)
 
-bc1 = DirichletBC(V, Constant(u_in), fd, 3)
-bc2 = DirichletBC(V, Constant(u_out), fd, 2)
+bc1 = DirichletBC(V, Constant(u_in), fd, 13)
+bc2 = DirichletBC(V, Constant(u_out), fd, 14)
 bc = [bc1, bc2]
 
 u = TrialFunction(V)
